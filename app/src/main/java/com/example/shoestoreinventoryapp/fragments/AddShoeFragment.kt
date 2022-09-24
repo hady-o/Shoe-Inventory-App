@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -30,18 +31,17 @@ class AddShoeFragment : Fragment() {
         {
             Navigation.findNavController(it).navigate(R.id.action_addShoeFragment_to_shoeListDestinationFragment)
         }
-
+        binding.shoe=Shoe("","","","")
         binding.saveButtonId.setOnClickListener()
         {
-            if(binding.nameId.text!=null && binding.brandId.text!=null &&binding.descriptionId.text!=null&&binding.sizeId.text!=null)
+            if(binding.shoe!!.name!=""&&binding.shoe!!.company!=""&&binding.shoe!!.size!=""&&binding.shoe!!.description!="")
             {
-                viewModel.add(
-                    Shoe(binding.nameId.text.toString(),
-                    binding.brandId.text.toString(),
-                    binding.sizeId.text.toString()
-                    , binding.descriptionId.text.toString())
-                )
-                Navigation.findNavController(it).navigate(R.id.action_addShoeFragment_to_shoeListDestinationFragment)
+                        viewModel.add(binding.shoe!!)
+                        Navigation.findNavController(it).navigate(R.id.action_addShoeFragment_to_shoeListDestinationFragment)
+            }
+            else
+            {
+                Toast.makeText(context,"please fill the whole fields",Toast.LENGTH_LONG).show()
             }
         }
 

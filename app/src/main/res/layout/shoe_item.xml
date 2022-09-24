@@ -9,7 +9,7 @@
             name="shoe"
             type="com.example.shoestoreinventoryapp.classes.Shoe" />
     </data>
-
+    <!-- using constraint layout to create complex layout without nested views -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/shoeNameId"
             tools:text="name"
-            android:text="@{shoe.name}"
+            android:text="@={shoe.name}"
             style="@style/item_style"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,14 +28,14 @@
         <TextView
             android:id="@+id/shoeCompanyId"
             style="@style/item_style"
-            android:text="@{shoe.company}"
+            android:text="@={shoe.company}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shoeNameId" />
 
         <TextView
             android:id="@+id/shoeSizeId"
             style="@style/item_style"
-            android:text="@{shoe.size}"
+            android:text="@={shoe.size}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shoeCompanyId" />
 
@@ -43,7 +43,7 @@
         <TextView
             android:id="@+id/shoeDescriptionId"
             style="@style/item_style"
-            android:text="@{shoe.description}"
+            android:text="@={shoe.description}"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shoeSizeId" />
